@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="640" viewBox="0 0 1440 640">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa8a2"/>
+    </marker>
+    <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d5c45"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="640" fill="#ffffff"/>
+
+  <text x="60" y="42" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="26" font-weight="700" fill="#1c1c1c">rohs-diff 处理链路</text>
+  <text x="60" y="66" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="13" fill="#7a7a7a">条款级差异 → 物料影响 → 可审计报告　|　确定性核心，离线可跑，无第三方依赖</text>
+
+  <g font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="11.5" fill="#8a8a8a" letter-spacing="1.2">
+    <text x="60" y="102">① 语料</text>
+    <text x="330" y="102">② 切片</text>
+    <text x="580" y="102">③ 对齐与分类</text>
+    <text x="860" y="52">④ 推导</text>
+    <text x="1140" y="108">⑤ 渲染</text>
+  </g>
+
+  <!-- inputs -->
+  <rect x="60" y="112" width="200" height="50" rx="4" fill="#fbfbfb" stroke="#dcdcdc"/>
+  <text x="160" y="133" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#333">GB/T 26572—2011</text>
+  <text x="160" y="150" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#8a8a8a">data/v2011.md · 含第 1 号修改单</text>
+
+  <rect x="60" y="174" width="200" height="50" rx="4" fill="#fbfbfb" stroke="#dcdcdc"/>
+  <text x="160" y="195" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#333">GB 26572—2025</text>
+  <text x="160" y="212" text-anchor="middle" font-family="Consolas, monospace" font-size="11" fill="#8a8a8a">data/v2025.md · 强制性国标</text>
+
+  <!-- ingest -->
+  <rect x="330" y="125" width="200" height="66" rx="4" fill="#f1f7f4" stroke="#0d5c45" stroke-width="1.6"/>
+  <text x="430" y="151" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#0d5c45">条款切片</text>
+  <text x="430" y="170" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#5f7a6f">ingest.py · 章 — 条 — 款</text>
+  <text x="430" y="184" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="10.5" fill="#7a8e86">保留层级路径，可回指原文</text>
+
+  <!-- diff -->
+  <rect x="580" y="122" width="210" height="72" rx="4" fill="#f1f7f4" stroke="#0d5c45" stroke-width="1.6"/>
+  <text x="685" y="147" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#0d5c45">结构对齐与差异分类</text>
+  <text x="685" y="166" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#5f7a6f">diff.py</text>
+  <text x="685" y="181" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="10.5" fill="#7a8e86">编号 → 标题兜底 → 编号复用检测</text>
+
+  <!-- four kinds -->
+  <g font-family="Microsoft YaHei, sans-serif" font-size="10.5">
+    <rect x="588" y="204" width="46" height="19" rx="3" fill="#e7f1ec"/><text x="611" y="217" text-anchor="middle" fill="#0d5c45">新增</text>
+    <rect x="638" y="204" width="46" height="19" rx="3" fill="#f7e6dc"/><text x="661" y="217" text-anchor="middle" fill="#8a3d12">删除</text>
+    <rect x="688" y="204" width="66" height="19" rx="3" fill="#fbf0dd"/><text x="721" y="217" text-anchor="middle" fill="#8a5a12">实质变更</text>
+    <rect x="758" y="204" width="66" height="19" rx="3" fill="#efefef"/><text x="791" y="217" text-anchor="middle" fill="#666">编辑性变更</text>
+  </g>
+
+  <!-- derive -->
+  <rect x="860" y="72" width="200" height="54" rx="4" fill="#ffffff" stroke="#c9d8d2"/>
+  <text x="960" y="94" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#333">按章聚合</text>
+  <text x="960" y="112" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#8a8a8a">章节 × 差异数 × 影响等级</text>
+
+  <rect x="860" y="146" width="200" height="54" rx="4" fill="#ffffff" stroke="#c9d8d2"/>
+  <text x="960" y="168" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#333">代表条款选取</text>
+  <text x="960" y="186" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#8a8a8a">pick → 实质变更优先 → 长度</text>
+
+  <rect x="860" y="220" width="200" height="54" rx="4" fill="#fdf7f2" stroke="#b3541e" stroke-width="1.4"/>
+  <text x="960" y="242" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#8a3d12">影响规则引擎</text>
+  <text x="960" y="260" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#a47455">rules.json · 确定性，可复核</text>
+
+  <!-- report -->
+  <rect x="1140" y="132" width="210" height="86" rx="4" fill="#0d5c45"/>
+  <text x="1245" y="162" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="16" font-weight="700" fill="#ffffff">报告渲染</text>
+  <text x="1245" y="182" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#bcd8cb">report.py</text>
+  <text x="1245" y="200" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="10.5" fill="#d6e7df">P1 总览 · P2 逐条 · P3 影响</text>
+
+  <text x="1245" y="240" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#7a7a7a">out/report.html</text>
+  <text x="1245" y="256" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#7a7a7a">out/report.pdf</text>
+
+  <!-- retrieval row -->
+  <rect x="330" y="420" width="200" height="58" rx="4" fill="#f1f7f4" stroke="#0d5c45" stroke-width="1.6"/>
+  <text x="430" y="444" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#0d5c45">BM25 条款检索</text>
+  <text x="430" y="462" text-anchor="middle" font-family="Consolas, monospace" font-size="10.5" fill="#5f7a6f">retrieve.py · n-gram 倒排</text>
+
+  <rect x="600" y="420" width="300" height="58" rx="4" fill="#ffffff" stroke="#c9d8d2"/>
+  <text x="750" y="441" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#333">带出处的答案（query）</text>
+  <text x="750" y="460" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#5f7a6f">9.79 [5.3.2] 符合性判定规则</text>
+
+  <!-- arrows: input -> ingest -->
+  <path d="M 260 140 C 295 140 300 152 330 155" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 260 199 C 295 199 300 178 330 175" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- ingest -> diff -->
+  <path d="M 530 158 L 576 158" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- diff -> derive -->
+  <path d="M 790 148 C 820 148 830 108 856 102" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 790 158 C 820 158 830 168 856 170" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 790 170 C 820 178 830 240 856 244" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- derive -> report -->
+  <path d="M 1060 99 C 1105 99 1105 158 1136 160" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 1060 173 L 1136 173" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+  <path d="M 1060 247 C 1105 247 1105 190 1136 188" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- ingest -> bm25 -->
+  <path d="M 430 191 L 430 416" fill="none" stroke="#0d5c45" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arg)"/>
+  <text x="440" y="330" font-family="Microsoft YaHei, sans-serif" font-size="10.5" fill="#5f7a6f">同一份切片，两条消费路径</text>
+
+  <path d="M 530 449 L 596 449" fill="none" stroke="#9aa8a2" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- legend -->
+  <g font-family="Microsoft YaHei, sans-serif" font-size="11" fill="#8a8a8a">
+    <rect x="60" y="540" width="14" height="14" rx="2" fill="#fbfbfb" stroke="#dcdcdc"/>
+    <text x="82" y="552">输入语料</text>
+    <rect x="160" y="540" width="14" height="14" rx="2" fill="#f1f7f4" stroke="#0d5c45"/>
+    <text x="182" y="552">确定性处理</text>
+    <rect x="278" y="540" width="14" height="14" rx="2" fill="#fdf7f2" stroke="#b3541e"/>
+    <text x="300" y="552">规则 / 判断</text>
+    <rect x="392" y="540" width="14" height="14" rx="2" fill="#0d5c45"/>
+    <text x="414" y="552">输出</text>
+  </g>
+
+  <text x="60" y="592" font-family="Microsoft YaHei, sans-serif" font-size="12" fill="#666">机器只输出可核算的事实；判断与边界写在 insights.txt 与 rules.json 中，可改、可 diff、可追责。</text>
+  <text x="60" y="614" font-family="Consolas, monospace" font-size="11" fill="#9a9a9a">python main.py build  ·  python main.py query "六价铬怎么判定"  ·  python main.py stats</text>
+</svg>
